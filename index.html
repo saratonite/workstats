@@ -3,15 +3,26 @@
   <head>
     <title>Google Sheets API Quickstart</title>
     <meta charset='utf-8' />
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <p>Google Sheets API Quickstart</p>
+    
+    <div class="container">
+      <div class="auth-box">
+          <!--Add buttons to initiate auth sequence and sign out-->
+        <button id="authorize-button" style="display: none;">Authorize</button>
+        <button id="signout-button" style="display: none;">Sign Out</button>
+      </div>
 
-    <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize-button" style="display: none;">Authorize</button>
-    <button id="signout-button" style="display: none;">Sign Out</button>
+      <div id="work-time">
+        
+      </div>
+    
 
     <pre id="content"></pre>
+    </div>
+
+    
     <script src="client_id.js"></script>
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
@@ -27,6 +38,7 @@
 
       var authorizeButton = document.getElementById('authorize-button');
       var signoutButton = document.getElementById('signout-button');
+      var workTimeDiv = document.getElementById('work-time');
 
       /**
        *  On load, called to load the auth2 library and API client library.
@@ -107,6 +119,12 @@
         }).then(function(response) {
 
             console.log(response);
+
+            var totslHourse = response.result.values[32][10];
+
+            workTimeDiv.textContent = totslHourse +' hours !'
+
+
 
         //   var range = response.result;
         //   if (range.values.length > 0) {
