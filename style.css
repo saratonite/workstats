@@ -19,10 +19,17 @@ button {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: #353535;
+     background-color: #353535; 
     align-items: center;
 }
-
+.container.dark {
+    background-color: #353535;
+     transition: background-color 3s;
+}
+.container.light {
+    background-color: #f3f3f3;
+     transition: background-color 3s;
+}
 .auth-box {
     width: 50%;
     padding: 1em;
@@ -45,6 +52,32 @@ button {
     font-family: 'Lobster', cursive;
 }
 
+.theme-setter {
+    position: absolute;
+    padding: 1px;
+    display: flex;
+    bottom: 0;
+    right: 10px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    border:1px solid green;
+}
+.theme-box {
+
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    cursor: pointer;
+}
+.theme-box.light {
+
+    background-color: #fff;
+}
+.theme-box.dark {
+
+    background-color: #333;
+   
+}
 footer {
     padding: 1em;
     color: #ffa4a4;

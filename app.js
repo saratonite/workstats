@@ -234,3 +234,61 @@ function drawCalendar(dateData){
     //     {day:'2016-05-05',count:10}
     // ]
     //drawCalendar(data);
+
+
+    var themeManager = function() {
+
+        var themeSwitch = document.querySelectorAll('.theme-box');
+
+        var container = document.querySelector('.container');
+
+
+
+        var init = function() {
+
+            setTheme(getTheme());
+
+            for(var i =0; i < themeSwitch.length; i++ )
+
+            themeSwitch[i].addEventListener('click',function(e) {
+
+                setTheme(this.dataset.theme);
+
+                
+
+
+            })
+        
+
+
+        }
+
+        var setTheme = function(name) {
+
+            // Set theme
+
+            let oldTheme = getTheme();
+
+            container.classList.remove(oldTheme);
+
+            container.classList.add(name);
+
+            localStorage.setItem('_theme',name)
+        }
+
+        var getTheme = function () {
+
+            // get current theme
+
+            let theme = localStorage.getItem('_theme') || 'dark';
+
+            return theme;
+        }
+
+
+        return {
+            init: init
+        }
+    }();
+
+    themeManager.init();
