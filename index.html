@@ -15,14 +15,17 @@
       </div>
 
       <div id="work-time">
-        
+        <div id="work-time-text"></div>
+         <div id="calendar"></div>
       </div>
-    
+     
 
     <pre id="content"></pre>
     </div>
 
-    
+    <script src="//d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="app.js"></script>
     <script src="client_id.js"></script>
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
@@ -38,7 +41,7 @@
 
       var authorizeButton = document.getElementById('authorize-button');
       var signoutButton = document.getElementById('signout-button');
-      var workTimeDiv = document.getElementById('work-time');
+      var workTimeDiv = document.getElementById('work-time-text');
 
       /**
        *  On load, called to load the auth2 library and API client library.
@@ -115,14 +118,35 @@
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1S-zj5yk1dAVswOEob9RxM1FtSWpvMIrIC5ZxS6wnsB0',
-          range: 'D4:N37',
+          range: 'B4:N37',
         }).then(function(response) {
 
             console.log(response);
 
-            var totslHourse = response.result.values[32][10];
+            var totslHourse = response.result.values[32][12];
 
             workTimeDiv.textContent = totslHourse +' hours !'
+
+            // make data for heat calender;
+
+            var newData = response.result.values.filter(function(row){
+
+              console.log('Row data',row[0])
+              if(row[0]) {
+                let _d = new Date(row[0])
+                let __date = ('0' + _d.getDate()).slice(-2);
+                let __month = ('0' + (_d.getMonth()+1)).slice(-2);
+                row.day = _d.getFullYear()+'-'+__month+'-'+__date;
+                row.count = +row[12] || 0;
+                return row;
+
+              }
+
+            })
+
+            console.log(newData)
+
+            drawCalendar(newData);
 
 
 

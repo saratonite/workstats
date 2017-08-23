@@ -29,11 +29,33 @@ button {
     top: 10px;
 }
 #work-time {
-        flex-grow: 1;
+    flex-grow: 1;
     width: 40%;
     color: #f63232;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 4em;
+}
+
+#calendar {
+  margin: 10px;
+  font-size: 18px;
+}
+.month {
+  margin-right: 8px;
+}
+.month-name {
+  font-size: 85%;
+  fill: #777;
+  font-family: Arial, Helvetica;
+}
+.day.hover {
+  stroke: #6d6E70;
+  stroke-width: 2;
+}
+.day.focus {
+  stroke: #ffff33;
+  stroke-width: 2;
 }
