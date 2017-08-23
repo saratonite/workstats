@@ -4,6 +4,7 @@
 }
 html,body {
     height: 100%;
+    font-family:'Roboto', sans-serif;
 }
 
 button {
@@ -31,12 +32,27 @@ button {
 #work-time {
     flex-grow: 1;
     width: 40%;
-    color: #f63232;
+    color: #f5042b;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 4em;
+}
+
+#work-time-text {
+
+    font-family: 'Lobster', cursive;
+}
+
+footer {
+    padding: 1em;
+    color: #ffa4a4;
+}
+
+footer a{
+    color: red;
+    text-decoration: none;
 }
 
 #calendar {
